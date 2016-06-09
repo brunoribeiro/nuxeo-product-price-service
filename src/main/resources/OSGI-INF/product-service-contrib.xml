@@ -6,4 +6,12 @@
   <service>
     <provide interface="pt.inevo.nuxeo.product.service.ProductService" />
   </service>
+  
+  <extension-point name="notifier">
+    <documentation>
+      This extension can be used to register new notifiers.
+    </documentation>
+    <object class="pt.inevo.nuxeo.product.extension.NotifierDescriptor"/>
+  </extension-point>
+  
 </component>

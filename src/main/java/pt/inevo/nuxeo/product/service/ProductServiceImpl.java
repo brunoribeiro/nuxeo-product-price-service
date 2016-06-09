@@ -1,12 +1,24 @@
 package pt.inevo.nuxeo.product.service;
 
+import java.util.Map;
+import java.util.HashMap;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
 
+import pt.inevo.nuxeo.product.extension.Notifier;
+import pt.inevo.nuxeo.product.extension.NotifierDescriptor;
+
 public class ProductServiceImpl extends DefaultComponent implements ProductService {
 
+	protected final Map<String, NotifierDescriptor> notifierDescriptors = new HashMap<>();
+	
+	protected final Log log = LogFactory.getLog(ProductServiceImpl.class);
+	
     /**
      * Component activated notification.
      * Called when the component is activated. All component dependencies are resolved at that moment.
@@ -47,7 +59,10 @@ public class ProductServiceImpl extends DefaultComponent implements ProductServi
 
     @Override
     public void registerContribution(Object contribution, String extensionPoint, ComponentInstance contributor) {
-        // Add some logic here to handle contributions
+    	if (extensionPoint.equals("notifier")) {
+    		NotifierDescriptor desc = (NotifierDescriptor) contribution;
+    		notifierDescriptors.put(desc.getName(), desc);	
+    	}
     }
 
     @Override
@@ -57,6 +72,14 @@ public class ProductServiceImpl extends DefaultComponent implements ProductServi
 
 	@Override
 	public long computePrice(DocumentModel product) {
-		return (long) product.getPropertyValue("nxproduct:productPrice");
+		
+		long price = (long) product.getPropertyValue("nxproduct:productPrice");
+		
+		for (NotifierDescriptor desc: notifierDescriptors.values()) {
+			Notifier notifier = desc.getNotifierInstance();
+			notifier.notify("New price computed: " + price);
+		}
+		
+		return price;
 	}
 }

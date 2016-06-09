@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<component name="pt.inevo.nuxeo.product.notifier.test">
+
+  <extension target="pt.inevo.nuxeo.product.service.service.product-service"
+      point="notifier">
+      
+      <notifier name="dummy" class="pt.inevo.nuxeo.product.extension.DummyNotifier">
+      	<name>Dummy Notifier</name>
+      </notifier>
+  </extension>
+
+</component>
