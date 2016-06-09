@@ -1,8 +1,8 @@
 package pt.inevo.nuxeo.product.service;
 
-import org.nuxeo.ecm.core.model.Document;
+import org.nuxeo.ecm.core.api.DocumentModel;
 
 public interface ProductService {
     /** Add some methods here. **/
-	public double computePrice(Document product);
+	public long computePrice(DocumentModel product);
 }

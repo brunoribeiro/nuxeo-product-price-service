@@ -1,6 +1,6 @@
 package pt.inevo.nuxeo.product.service;
 
-import org.nuxeo.ecm.core.model.Document;
+import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
@@ -56,7 +56,7 @@ public class ProductServiceImpl extends DefaultComponent implements ProductServi
     }
 
 	@Override
-	public double computePrice(Document product) {
-		return Double.parseDouble((String) product.getPropertyValue("nxproduct:productPrice"));
+	public long computePrice(DocumentModel product) {
+		return (long) product.getPropertyValue("nxproduct:productPrice");
 	}
 }
