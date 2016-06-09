@@ -1,5 +1,6 @@
 package pt.inevo.nuxeo.product.service;
 
+import org.nuxeo.ecm.core.model.Document;
 import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
@@ -53,4 +54,9 @@ public class ProductServiceImpl extends DefaultComponent implements ProductServi
     public void unregisterContribution(Object contribution, String extensionPoint, ComponentInstance contributor) {
         // Logic to do when unregistering any contribution
     }
+
+	@Override
+	public double computePrice(Document product) {
+		return Double.parseDouble((String) product.getPropertyValue("nxproduct:productPrice"));
+	}
 }
