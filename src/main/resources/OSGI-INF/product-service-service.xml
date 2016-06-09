@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<component name="pt.inevo.nuxeo.product.service.service.product-service" version="1.0">
+
+  <implementation class="pt.inevo.nuxeo.product.service.ProductServiceImpl" />
+
+  <service>
+    <provide interface="pt.inevo.nuxeo.product.service.ProductService" />
+  </service>
+</component>
