@@ -1,15 +1,8 @@
 package pt.inevo.nuxeo.product.event;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.IdRef;
@@ -45,6 +38,8 @@ public class TestNotSoldEvent {
     	IdRef docIdRef = new IdRef(doc.getId());
     	doc = coreSession.getDocument(docIdRef);
     	Assert.assertNotNull(doc);
+
+    	Assert.assertTrue(doc.hasSchema("collection"));
     	
 		EventProducer eventProducer;
 		try {

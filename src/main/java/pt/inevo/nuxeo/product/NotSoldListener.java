@@ -27,7 +27,7 @@ public class NotSoldListener implements EventListener {
         }
         
         @SuppressWarnings("unchecked")
-		List<String> visualIds = (List<String>) doc.getPropertyValue(CollectionConstants.DOCUMENT_COLLECTION_IDS_PROPERTY_NAME);
+		List<String> visualIds = (List<String>) doc.getPropertyValue(CollectionConstants.COLLECTION_DOCUMENT_IDS_PROPERTY_NAME);
         for (String visualId: visualIds) {
         	IdRef docIdRef = new IdRef(visualId);
         	DocumentModel visual = ctx.getCoreSession().getDocument(docIdRef);
