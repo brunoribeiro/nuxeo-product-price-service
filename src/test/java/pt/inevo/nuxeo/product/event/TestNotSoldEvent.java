@@ -1,6 +1,7 @@
 package pt.inevo.nuxeo.product.event;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.nuxeo.ecm.collections.core.adapter.Collection;
@@ -9,6 +10,7 @@ import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.IdRef;
 import org.nuxeo.ecm.core.event.EventProducer;
 import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
+import org.nuxeo.ecm.core.storage.sql.coremodel.SQLSession;
 import org.nuxeo.ecm.core.test.CoreFeature;
 import org.nuxeo.runtime.api.Framework;
 import org.nuxeo.ecm.core.event.Event;
@@ -28,6 +30,11 @@ public class TestNotSoldEvent {
 
     @Inject
     protected CoreSession coreSession;
+    
+    @Before
+    public void setUp() {
+    	Framework.getProperties().setProperty(SQLSession.ALLOW_NEGATIVE_ACL_PROPERTY, "true");
+    }
     
     @Test
     public void testNotSoldEvent() {
