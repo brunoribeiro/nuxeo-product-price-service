@@ -10,6 +10,8 @@ import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
 
+import pt.inevo.nuxeo.product.ProductAdapter;
+import pt.inevo.nuxeo.product.ProductAdapterFactory;
 import pt.inevo.nuxeo.product.extension.Notifier;
 import pt.inevo.nuxeo.product.extension.NotifierDescriptor;
 
@@ -73,13 +75,19 @@ public class ProductServiceImpl extends DefaultComponent implements ProductServi
 	@Override
 	public long computePrice(DocumentModel product) {
 		
-		long price = (long) product.getPropertyValue("nxproduct:productPrice");
+		ProductAdapter productAdapter = product.getAdapter(ProductAdapter.class);
 		
-		for (NotifierDescriptor desc: notifierDescriptors.values()) {
-			Notifier notifier = desc.getNotifierInstance();
-			notifier.notify("New price computed: " + price);
+		if (productAdapter != null) {
+		
+			long price = (long) product.getPropertyValue("nxproduct:productPrice");
+			
+			for (NotifierDescriptor desc: notifierDescriptors.values()) {
+				Notifier notifier = desc.getNotifierInstance();
+				notifier.notify("New price computed: " + price);
+			}
+			
+			return price;
 		}
-		
-		return price;
+		return 0;
 	}
 }

@@ -1,9 +1,12 @@
-Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .
 Manifest-Version: 1.0
-Bundle-Vendor: pt.inevo.nuxeo.product.service
+Bundle-SymbolicName: pt.inevo.nuxeo.product.service.nuxeo-product-serv
+ ice;singleton=true
 Bundle-Version: 1.0.0
 Bundle-Name: nuxeo-product-service
+Bundle-ClassPath: .
+Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: pt.inevo.nuxeo.product.service.nuxeo-product-service;singleton=true
-Nuxeo-Component: OSGI-INF/product-service-contrib.xml
+Bundle-Vendor: pt.inevo.nuxeo.product.service
+Nuxeo-Component: OSGI-INF/product-service-contrib.xml,OSGI-INF/extensi
+ ons/pt.inevo.nuxeo.product.ProductAdapter.xml
+
