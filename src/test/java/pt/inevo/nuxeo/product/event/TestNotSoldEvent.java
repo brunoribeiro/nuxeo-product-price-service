@@ -19,9 +19,10 @@ import org.nuxeo.runtime.test.runner.LocalDeploy;
 
 import com.google.inject.Inject;
 
+import pt.inevo.nuxeo.product.service.TestProductFeatures;
+
 @RunWith(FeaturesRunner.class)
-@Features({ CoreFeature.class })
-@Deploy({"org.nuxeo.ecm.platform.collections.core","studio.extensions.rdias-SANDBOX"})
+@Features({TestProductFeatures.class})
 @LocalDeploy("nuxeo-product-service:OSGI-INF/listeners/product-not-sold-listener.xml")
 public class TestNotSoldEvent {
 
