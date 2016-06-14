@@ -3,6 +3,7 @@ package pt.inevo.nuxeo.product.event;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.nuxeo.ecm.collections.core.adapter.Collection;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.IdRef;
@@ -20,7 +21,7 @@ import com.google.inject.Inject;
 
 @RunWith(FeaturesRunner.class)
 @Features({ CoreFeature.class })
-@Deploy("studio.extensions.rdias-SANDBOX")
+@Deploy({"org.nuxeo.ecm.platform.collections.core","studio.extensions.rdias-SANDBOX"})
 @LocalDeploy("nuxeo-product-service:OSGI-INF/listeners/product-not-sold-listener.xml")
 public class TestNotSoldEvent {
 
@@ -38,7 +39,6 @@ public class TestNotSoldEvent {
     	IdRef docIdRef = new IdRef(doc.getId());
     	doc = coreSession.getDocument(docIdRef);
     	Assert.assertNotNull(doc);
-
     	Assert.assertTrue(doc.hasSchema("collection"));
     	
 		EventProducer eventProducer;
