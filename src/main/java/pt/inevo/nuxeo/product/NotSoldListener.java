@@ -34,6 +34,8 @@ public class NotSoldListener implements EventListener {
         	Assert.assertNotNull(visual);
         }
         
+        DocumentModel folder = ctx.getCoreSession().createDocumentModel("/", "folder", "Folder");
+        
         System.out.println("Handled event in NotSoldListener.");
 		
 	}

@@ -41,6 +41,19 @@ public class TestNotSoldEvent {
     	Assert.assertNotNull(doc);
     	Assert.assertTrue(doc.hasSchema("collection"));
     	
+    	DocumentModel vis = coreSession.createDocumentModel("/", "Test Visual", "Visual");
+    	vis = coreSession.createDocument(vis);
+    	coreSession.save();
+    	
+    	Collection collection = doc.getAdapter(Collection.class);
+    	collection.addDocument(vis.getId());
+    	doc = coreSession.saveDocument(doc);
+    	coreSession.save();
+    	
+    	docIdRef = new IdRef(vis.getId());
+    	vis = coreSession.getDocument(docIdRef);
+    	Assert.assertNotNull(vis);
+    	
 		EventProducer eventProducer;
 		try {
 			eventProducer = Framework.getService(EventProducer.class);
