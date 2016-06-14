@@ -8,5 +8,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-ManifestVersion: 2
 Bundle-Vendor: pt.inevo.nuxeo.product.service
 Nuxeo-Component: OSGI-INF/product-service-contrib.xml,OSGI-INF/extensi
- ons/pt.inevo.nuxeo.product.ProductAdapter.xml
+ ons/pt.inevo.nuxeo.product.ProductAdapter.xml,OSGI-INF/product-not-sold-listener.xml
 

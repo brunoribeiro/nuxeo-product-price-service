@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<component name="pt.inevo.nuxeo.product.ProductNotSoldListener">
+  <extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+    <listener name="productlistener" async="false" postCommit="false" priority="120"
+      class="pt.inevo.nuxeo.product.NotSoldListener">
+      <event>notSoldEvent</event>
+    </listener>
+  </extension>
+</component>
