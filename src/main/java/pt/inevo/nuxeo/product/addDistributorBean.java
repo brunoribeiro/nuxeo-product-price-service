@@ -77,16 +77,17 @@ public class addDistributorBean implements Serializable {
             message = message + " (" + selectedDocs.size()
                     + " documents selected)";
         }
-        facesMessages.add(StatusMessage.Severity.INFO, message);
-        
-        List<Map<String, Serializable>> distributors = new ArrayList<>();
-        Map<String, Serializable> distributor = new HashMap<>();
-        distributor.put("name", "distrib1");
-        distributor.put("sellLocation", "location1");
-        distributors.add(distributor);
+        facesMessages.add(StatusMessage.Severity.INFO, message);      
         
         for (DocumentModel doc : selectedDocs) {
         	ProductAdapter adapter = doc.getAdapter(ProductAdapter.class);
+        	
+        	List<Map<String, Serializable>> distributors = adapter.getDistributors();
+            Map<String, Serializable> distributor = new HashMap<>();
+            distributor.put("name", "distrib1");
+            distributor.put("sellLocation", "location1");
+            distributors.add(distributor);
+        	
         	adapter.setDistributors(distributors);
         	documentManager.saveDocument(doc);
 		}
