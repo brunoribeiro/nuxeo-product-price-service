@@ -11,4 +11,5 @@ Nuxeo-Component: OSGI-INF/product-service-contrib.xml,OSGI-INF/extensi
  ons/pt.inevo.nuxeo.product.ProductAdapter.xml,OSGI-INF/listeners/prod
  uct-not-sold-listener.xml,OSGI-INF/extensions/pt.inevo.nuxeo.product.
  addDistributorBean.xml
-
+Nuxeo-WebModule: pt.inevo.nuxeo.product.web.ProductWebApp
+ 
