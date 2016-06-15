@@ -11,7 +11,6 @@ import org.nuxeo.ecm.core.api.IdRef;
 import org.nuxeo.ecm.core.event.EventProducer;
 import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
 import org.nuxeo.ecm.core.storage.sql.coremodel.SQLSession;
-import org.nuxeo.ecm.core.test.CoreFeature;
 import org.nuxeo.runtime.api.Framework;
 import org.nuxeo.ecm.core.event.Event;
 import org.nuxeo.runtime.test.runner.Deploy;
@@ -21,10 +20,10 @@ import org.nuxeo.runtime.test.runner.LocalDeploy;
 
 import com.google.inject.Inject;
 
-import pt.inevo.nuxeo.product.service.TestProductFeatures;
+import pt.inevo.nuxeo.product.service.ProductFeatures;
 
 @RunWith(FeaturesRunner.class)
-@Features({TestProductFeatures.class})
+@Features({ProductFeatures.class})
 @LocalDeploy("nuxeo-product-service:OSGI-INF/listeners/product-not-sold-listener.xml")
 public class TestNotSoldEvent {
 

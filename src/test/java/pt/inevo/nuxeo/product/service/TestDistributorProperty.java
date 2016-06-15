@@ -15,6 +15,7 @@ import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.IdRef;
 import org.nuxeo.ecm.core.api.model.Property;
 import org.nuxeo.ecm.core.test.CoreFeature;
+import org.nuxeo.ecm.platform.test.PlatformFeature;
 import org.nuxeo.runtime.test.runner.Deploy;
 import org.nuxeo.runtime.test.runner.Features;
 import org.nuxeo.runtime.test.runner.FeaturesRunner;
@@ -25,8 +26,7 @@ import com.google.inject.Inject;
 import pt.inevo.nuxeo.product.ProductAdapter;
 
 @RunWith(FeaturesRunner.class)
-@Features({ CoreFeature.class })
-@Deploy("studio.extensions.rdias-SANDBOX")
+@Features({ ProductFeatures.class })
 @LocalDeploy("nuxeo-product-service:OSGI-INF/extensions/pt.inevo.nuxeo.product.ProductAdapter.xml")
 public class TestDistributorProperty {
 
