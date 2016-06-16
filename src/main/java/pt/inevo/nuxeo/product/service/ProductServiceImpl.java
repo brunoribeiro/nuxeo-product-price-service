@@ -11,7 +11,6 @@ import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
 
 import pt.inevo.nuxeo.product.ProductAdapter;
-import pt.inevo.nuxeo.product.ProductAdapterFactory;
 import pt.inevo.nuxeo.product.extension.Notifier;
 import pt.inevo.nuxeo.product.extension.NotifierDescriptor;
 

@@ -13,7 +13,6 @@ import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
 import org.nuxeo.ecm.core.storage.sql.coremodel.SQLSession;
 import org.nuxeo.runtime.api.Framework;
 import org.nuxeo.ecm.core.event.Event;
-import org.nuxeo.runtime.test.runner.Deploy;
 import org.nuxeo.runtime.test.runner.Features;
 import org.nuxeo.runtime.test.runner.FeaturesRunner;
 import org.nuxeo.runtime.test.runner.LocalDeploy;

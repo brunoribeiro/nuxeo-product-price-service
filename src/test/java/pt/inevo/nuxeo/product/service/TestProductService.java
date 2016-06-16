@@ -2,8 +2,7 @@ package pt.inevo.nuxeo.product.service;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
@@ -14,6 +13,8 @@ import org.nuxeo.runtime.test.runner.FeaturesRunner;
 import org.nuxeo.runtime.test.runner.LocalDeploy;
 
 import com.google.inject.Inject;
+
+import pt.inevo.nuxeo.product.ProductAdapter;
 
 @RunWith(FeaturesRunner.class)
 @Features({ ProductFeatures.class })
@@ -29,23 +30,24 @@ public class TestProductService {
     
     @Test
     public void testService() {
-        assertNotNull(productService);
+        Assert.assertNotNull(productService);
     }
     
     @Test
     public void testComputePrice() {
-    	//create the dummy document
-    	DocumentModel doc = coreSession.createDocumentModel("/", "Test Product", "Product");
-    	doc.setProperty("nxproduct","productPrice", "100");
-    	doc = coreSession.createDocument(doc);
+    	
+    	DocumentModel product = coreSession.createDocumentModel("/", "Test Product", "Product");
+    	ProductAdapter productAdapter = product.getAdapter(ProductAdapter.class);
+    	long price = 100l;
+    	
+    	productAdapter.setProductPrice(price);
+    	product = coreSession.createDocument(product);
     	coreSession.save();
     	
-    	IdRef docIdRef = new IdRef(doc.getId());
-    	doc = coreSession.getDocument(docIdRef);
-    	assertNotNull(doc);
-    	
-    	long price = productService.computePrice(doc);
-    	assertEquals(100, price);
+    	product = coreSession.getDocument(new IdRef(product.getId()));
+    	Assert.assertNotNull(product);
+    	long productPrice = productService.computePrice(product);
+    	Assert.assertEquals(productPrice, price);
     	
     }
 }

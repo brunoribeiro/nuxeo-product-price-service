@@ -16,7 +16,7 @@ public class NotifierDescriptor implements Serializable {
     protected String name;
     
     @XNode("@class")
-    protected Class notifierClass;
+    protected Class<?> notifierClass;
     
     public String getName() {
     	return name;
